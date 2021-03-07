@@ -132,64 +132,64 @@ ProjectSchema.virtual('trialExpired').get(function () {
 
 ProjectSchema.virtual('trialDaysLeft').get(function () {
   // https://stackoverflow.com/questions/6963311/add-days-to-a-date-object
-  let now = new Date();
-  winston.debug("trialDaysLeft now.getTime() " + now.getTime());
-  winston.debug("trialDaysLeft this.createdAt.getTime() " + this.createdAt.getTime());
-  winston.debug("trialDaysLeft this ", this.toObject());
-  winston.debug("trialDaysLeft trial " + this.profile.trialDays * 86400000);
+  // let now = new Date();
+  // winston.debug("trialDaysLeft now.getTime() " + now.getTime());
+  // winston.debug("trialDaysLeft this.createdAt.getTime() " + this.createdAt.getTime());
+  // winston.debug("trialDaysLeft this ", this.toObject());
+  // winston.debug("trialDaysLeft trial " + this.profile.trialDays * 86400000);
 
-  const millisTrialDaysLeft = now.getTime() - (this.createdAt.getTime() + this.profile.trialDays * 86400000);
-  const trialDaysLeft = Math.floor(millisTrialDaysLeft / (60 * 60 * 24 * 1000));
+  // const millisTrialDaysLeft = now.getTime() - (this.createdAt.getTime() + this.profile.trialDays * 86400000);
+  // const trialDaysLeft = Math.floor(millisTrialDaysLeft / (60 * 60 * 24 * 1000));
 
-  winston.debug("trialDaysLeft now.getTime() " + now.getTime());
-  winston.debug("trialDaysLeft this.createdAt.getTime() " + this.createdAt.getTime());
-  winston.debug("trialDaysLeft ", millisTrialDaysLeft);
-  winston.debug("trialDaysLeft - PROJECT NAME " + this.name + '; CREATED at ' + this.createdAt + ' -- trialDaysLeft: ', trialDaysLeft);
-  return trialDaysLeft
-  // return -8
+  // winston.debug("trialDaysLeft now.getTime() " + now.getTime());
+  // winston.debug("trialDaysLeft this.createdAt.getTime() " + this.createdAt.getTime());
+  // winston.debug("trialDaysLeft ", millisTrialDaysLeft);
+  // winston.debug("trialDaysLeft - PROJECT NAME " + this.name + '; CREATED at ' + this.createdAt + ' -- trialDaysLeft: ', trialDaysLeft);
+  // return trialDaysLeft
+  return -8
 
 });
 
 ProjectSchema.virtual('isActiveSubscription').get(function () {
 
-  let now = new Date();
-  winston.debug("isActiveSubscription - now.getTime() " + now.getTime());
+  // let now = new Date();
+  // winston.debug("isActiveSubscription - now.getTime() " + now.getTime());
 
-  winston.debug("isActiveSubscription  - PROJECT NAME: " + this.name);
-  winston.debug("isActiveSubscription  - PROJECT profile " + this.profile);
-  winston.debug("isActiveSubscription  - PROJECT profile trialDays: " + this.profile.trialDays);
-  winston.debug("isActiveSubscription  - PROJECT profile name: " + this.profile.name);
-  winston.debug("isActiveSubscription  - PROJECT profile type: " + this.profile.type);
-  winston.debug("isActiveSubscription  - PROJECT profile subscription end date: " + this.profile.subEnd);
-  winston.debug("isActiveSubscription  -  this.activeOperatingHours: " + this.activeOperatingHours);
-  var isActiveSubscription = '';
-  if (this.profile && this.profile.type === 'payment') {
+  // winston.debug("isActiveSubscription  - PROJECT NAME: " + this.name);
+  // winston.debug("isActiveSubscription  - PROJECT profile " + this.profile);
+  // winston.debug("isActiveSubscription  - PROJECT profile trialDays: " + this.profile.trialDays);
+  // winston.debug("isActiveSubscription  - PROJECT profile name: " + this.profile.name);
+  // winston.debug("isActiveSubscription  - PROJECT profile type: " + this.profile.type);
+  // winston.debug("isActiveSubscription  - PROJECT profile subscription end date: " + this.profile.subEnd);
+  // winston.debug("isActiveSubscription  -  this.activeOperatingHours: " + this.activeOperatingHours);
+  // var isActiveSubscription = '';
+  // if (this.profile && this.profile.type === 'payment') {
 
-    if (this.profile.subEnd) {
-      winston.debug("isActiveSubscription  - PROJECT profile subscription end date getTime(): " + this.profile.subEnd.getTime());
+  //   if (this.profile.subEnd) {
+  //     winston.debug("isActiveSubscription  - PROJECT profile subscription end date getTime(): " + this.profile.subEnd.getTime());
 
-      var subEndPlus3gg = this.profile.subEnd.getTime() + 259200000
-      winston.debug("isActiveSubscription  - PROJECT profile subscription end date getTime() + 3gg: " + subEndPlus3gg);
+  //     var subEndPlus3gg = this.profile.subEnd.getTime() + 259200000
+  //     winston.debug("isActiveSubscription  - PROJECT profile subscription end date getTime() + 3gg: " + subEndPlus3gg);
 
-      // FOR DEBUG 
-      var subEndMinus3gg = this.profile.subEnd.getTime() - 259200000
-      winston.debug("isActiveSubscription  - PROJECT profile subscription end date getTime() - 3gg: " + subEndMinus3gg);
+  //     // FOR DEBUG 
+  //     var subEndMinus3gg = this.profile.subEnd.getTime() - 259200000
+  //     winston.debug("isActiveSubscription  - PROJECT profile subscription end date getTime() - 3gg: " + subEndMinus3gg);
 
-      // + 259200000 
-      if (now.getTime() > (this.profile.subEnd.getTime() + 259200000)) {
-        isActiveSubscription = false;
-      } else {
-        isActiveSubscription = true;
-      }
-    }
-  } else {
-    isActiveSubscription = false;
-  }
+  //     // + 259200000 
+  //     if (now.getTime() > (this.profile.subEnd.getTime() + 259200000)) {
+  //       isActiveSubscription = false;
+  //     } else {
+  //       isActiveSubscription = true;
+  //     }
+  //   }
+  // } else {
+  //   isActiveSubscription = false;
+  // }
 
-  winston.debug("isActiveSubscription  - isActiveSubscription " + isActiveSubscription);
+  // winston.debug("isActiveSubscription  - isActiveSubscription " + isActiveSubscription);
 
-  return isActiveSubscription
-
+  // return isActiveSubscription
+  return true;
 });
 
 ProjectSchema.index({ _id: 1, status: 1 }); // schema level

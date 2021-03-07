@@ -8,7 +8,7 @@ class I8nUtil {
     //unused
     getMessage(key, lang, labelsObject) {
         if (!lang) {
-            lang = "EN";
+            lang = "ES";
         }
 
         lang = lang.toUpperCase();

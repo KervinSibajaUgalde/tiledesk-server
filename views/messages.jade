@@ -5,12 +5,12 @@ block content
     img.className#IdName(src="https://tiledesk.com/tiledesk-logo-x1.png" alt="tiledesk logo") 
       
     div(class="transcript-wrapper")
-      h1(class="transcript-title") Chat Transcript
+      h1(class="transcript-title") Transcripción del Chat
 
 
       each message in messages
         p(class="transcript-p") 
-          span(class="transcript-chat-date") [#{message.createdAt.toLocaleString('it', { timeZone: 'UTC' })}] 
+          span(class="transcript-chat-date") [#{message.createdAt.toLocaleString('es-CR', { timeZone: 'America/Costa_Rica' })}] 
           span(class="transcript-chat-sender") #{message.senderFullname}: 
           span(class="transcript-chat-msg") #{message.text}
       
